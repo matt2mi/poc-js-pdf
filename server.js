@@ -31,9 +31,9 @@ app.post('/buildPDF', function(req,res){
     console.log(req.body);
     console.log('pdf to be posted');
 
-    wkhtmltopdf(req.body, { output: 'out.pdf' });
+    wkhtmltopdf(req.body, { output: 'result.pdf' });
 
-    res.status(200).send(__dirname + '/output.pdf', 'output.pdf');
+    res.status(200).send(__dirname + '/result.pdf', 'result.pdf');
 });
 
 app.listen(9000, function() {

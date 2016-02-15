@@ -77,7 +77,7 @@ angular.module('angularGruntSeed')
                     var hiddenElement = document.createElement('a');
                     hiddenElement.href = 'data:attachment/pdf,' + encodeURI(data.data);
                     hiddenElement.target = '_blank';
-                    hiddenElement.download = 'ticket2.pdf';
+                    hiddenElement.download = 'result.pdf';
                     hiddenElement.click();
                 }, function(err) {
                      console.log('error : ');
@@ -92,7 +92,7 @@ angular.module('angularGruntSeed')
                     var hiddenElement = document.createElement('a');
                     hiddenElement.href = 'data:attachment/pdf,' + encodeURI(data.data);
                     hiddenElement.target = '_blank';
-                    hiddenElement.download = 'ticket2.pdf';
+                    hiddenElement.download = 'result.pdf';
                     hiddenElement.click();
                 }, function(err) {
                     console.log('error : ');
