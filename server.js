@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-//var wkhtmltopdf = require('wkhtmltopdf');
+var wkhtmltopdf = require('wkhtmltopdf');
 var fs = require('fs');
 var pdf = require('html-pdf');
 var options = { format: 'Letter' };
@@ -31,9 +31,9 @@ app.post('/buildPDF', function(req,res){
     console.log(req.body);
     console.log('pdf to be posted');
 
-    //wkhtmltopdf('<h1>Test</h1><p>Hello world</p>', 'letter');
+    wkhtmltopdf(req.body, { output: 'out.pdf' });
 
-    res.status(200).send(__dirname + '/ticket.pdf', 'ticket.pdf');
+    res.status(200).send(__dirname + '/output.pdf', 'output.pdf');
 });
 
 app.listen(9000, function() {
