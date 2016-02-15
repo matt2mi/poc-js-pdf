@@ -1,0 +1,48 @@
+<div class="container" style="width: 80%">
+    <div class="row" style="text-align: center;">
+        <label>Titres : </label>
+        <input type="text" ng-model="label" />
+        <button type="button" class="btn btn-default" style="margin-left: 20px;"
+                ng-repeat="button in titleModules" ng-click="addModule($index)">
+            btn {{button.type}}
+        </button>
+    </div>
+    <div class="row" style="text-align: center;">
+        <span>Tableau : </span>
+        <label for="nbCols">nb cols : </label>
+        <input id="nbCols" type="text" ng-model="nbCols" />
+        <label for="nbRows">nb rows : </label>
+        <input id="nbRows" type="text" ng-model="nbRows" />
+        <button type="button" class="btn btn-default" style="margin-left: 20px;" ng-click="addTabModule()">
+            tab rows x cols
+        </button>
+    </div>
+    <div class="row" style="text-align: center;">
+        <button type="button" class="btn btn-success" style="margin-left: 20px;"
+                ng-click="exportPDFPost()">
+            Export to PDF (post)
+        </button>
+        <button type="button" class="btn btn-success" style="margin-left: 20px;"
+                ng-click="exportPDFGet()">
+            Export to PDF (get)
+        </button>
+    </div>
+    <div class="row" style="border: 1px solid red;">
+        <div ng-repeat="module in result">
+            <div class="col-xs-10" style="border-right: 1px solid black;">
+                <p ng-bind-html="module"></p>
+            </div>
+            <div class="col-xs-2">
+                <button type="button" class="btn btn-error" ng-click="upModule($index)">
+                    ↑
+                </button>
+                <button type="button" class="btn btn-error" ng-click="deleteModule($index)">
+                    X
+                </button>
+                <button type="button" class="btn btn-error" ng-click="downModule($index)">
+                    ↓
+                </button>
+            </div>
+    </div>
+</div>
+<!-- /.container -->
