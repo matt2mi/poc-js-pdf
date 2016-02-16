@@ -84,12 +84,9 @@ angular.module('angularGruntSeed')
                 htmlToPost += $sce.getTrustedHtml($scope.result[i]);
             }
             $http.post($scope.urlServer, {htmlToRender: htmlToPost}, {responseType:'arraybuffer'})
-                .then(function(data) {
+                .then(function() {
                     console.log('success');
-
-                    var file = new Blob([data.data], {type: 'application/pdf'});
-                    var fileURL = URL.createObjectURL(file);
-                    window.open(fileURL);
+                    $scope.getPDF();
                 }, function(err) {
                     console.log('error : ');
                     console.log(err);
