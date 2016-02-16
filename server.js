@@ -27,7 +27,7 @@ app.post('/buildPDF', function(req,res){
         wkhtmltopdf(req.body.htmlToRender, { output: './generated_files/result.pdf' });
     });
 
-    res.status(200);
+    res.status(200).end();
 });
 
 app.get('/getPDF', function(req,res) {

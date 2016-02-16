@@ -65,6 +65,19 @@ angular.module('angularGruntSeed')
                 $scope.result.splice(id + 1, 0, moduleTemp);
             }
         };
+        $scope.getPDF = function() {
+            $http.get('/getPDF', {responseType:'arraybuffer'})
+                .then(function(data) {
+                    console.log('success');
+
+                    var file = new Blob([data.data], {type: 'application/pdf'});
+                    var fileURL = URL.createObjectURL(file);
+                    window.open(fileURL);
+                }, function(err) {
+                    console.log('error : ');
+                    console.log(err);
+                });
+        };
         $scope.exportPDFPost = function() {
             var htmlToPost = '';
             for (var i = 0; i < $scope.result.length; i++) {
@@ -78,8 +91,8 @@ angular.module('angularGruntSeed')
                     var fileURL = URL.createObjectURL(file);
                     window.open(fileURL);
                 }, function(err) {
-                     console.log('error : ');
-                     console.log(err);
+                    console.log('error : ');
+                    console.log(err);
                 });
         };
     }
