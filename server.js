@@ -24,11 +24,10 @@ app.post('/buildPDF', function(req,res){
         }
         console.log("The pdf file was deleted!");
 
-        wkhtmltopdf(req.body.htmlToRender, { output: './generated_files/result.pdf' });
-
-        console.log("The pdf file was built!");
-        
-        res.status(200).end();
+        wkhtmltopdf(req.body.htmlToRender, { output: './generated_files/result.pdf' }, function() {
+            console.log("The pdf file was built!");
+            res.status(200).end();
+        });
     });
 
 });
