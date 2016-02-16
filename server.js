@@ -2,8 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var wkhtmltopdf = require('wkhtmltopdf');
 var fs = require('fs');
-var pdf = require('html-pdf');
-var options = { format: 'Letter' };
 
 var app = express();
 
@@ -16,24 +14,45 @@ app.get('/',function(req,res){
     res.sendFile('/src/index.html');
 });
 
-app.get('/buildPDF', function(req, res){
-    console.log('pdf to be getted');
-
-    var html = fs.readFileSync(__dirname + '/src/index.html', 'utf8');
-    pdf.create(html, options).toFile('./ticket2.pdf', function(err, result) {
-        if (err) return console.log(err);
-        console.log(result); // { filename: '/app/ticket2.pdf' }
-        res.contentType("application/pdf").send(result);
-    });
-});
-
 app.post('/buildPDF', function(req,res){
-    console.log(req.body);
-    console.log('pdf to be posted');
+    console.log(req.body.htmlToRender);
 
-    wkhtmltopdf(req.body, { output: 'result.pdf' });
+    ///TODO : handle promises
+    /*fs.unlink('./generated_files/result.html', function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was deleted!");
 
-    res.status(200).send(__dirname + '/result.pdf', 'result.pdf');
+        fs.writeFile('./generated_files/result.html', req.body.htmlToRender, function(err) {
+            if(err) {
+                console.log('error writing files');
+                console.log(err);
+            }
+            console.log("The file was saved!");
+
+            //wkhtmltopdf('./generated_files/result.html', { output: './generated_files/result.pdf' });
+
+            fs.readFile('./generated_files/result.pdf', function(err,data){
+                if(err){
+                    res.json({'status':'error', msg:err});
+                }else{
+                    res.writeHead(200, {"Content-Type": "application/pdf"});
+                    res.write(data);
+                    res.end();
+                }
+            });
+        });
+    });*/
+
+    fs.unlink('./generated_files/result.pdf', function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was deleted!");
+        wkhtmltopdf('http://google.com/', { pageSize: 'letter' }).pipe(fs.createWriteStream('./generated_files/result.pdf'));
+    });
+
 });
 
 app.listen(9000, function() {

@@ -70,33 +70,16 @@ angular.module('angularGruntSeed')
             for (var i = 0; i < $scope.result.length; i++) {
                 htmlToPost += $sce.getTrustedHtml($scope.result[i]);
             }
-            $http.post($scope.urlServer, {htmlToRender: htmlToPost})
-                .then(function(data) {
-                     console.log('success');
-
-                    var hiddenElement = document.createElement('a');
-                    hiddenElement.href = 'data:attachment/pdf,' + encodeURI(data.data);
-                    hiddenElement.target = '_blank';
-                    hiddenElement.download = 'result.pdf';
-                    hiddenElement.click();
-                }, function(err) {
-                     console.log('error : ');
-                     console.log(err.data);
-                });
-        };
-        $scope.exportPDFGet = function() {
-            $http.get($scope.urlServer)
+            $http.post($scope.urlServer, {htmlToRender: htmlToPost}, {responseType:'arraybuffer'})
                 .then(function(data) {
                     console.log('success');
 
-                    var hiddenElement = document.createElement('a');
-                    hiddenElement.href = 'data:attachment/pdf,' + encodeURI(data.data);
-                    hiddenElement.target = '_blank';
-                    hiddenElement.download = 'result.pdf';
-                    hiddenElement.click();
+                    var file = new Blob([data.data], {type: 'application/pdf'});
+                    var fileURL = URL.createObjectURL(file);
+                    window.open(fileURL);
                 }, function(err) {
-                    console.log('error : ');
-                    console.log(err.data);
+                     console.log('error : ');
+                     console.log(err);
                 });
         };
     }
