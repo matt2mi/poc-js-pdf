@@ -18,7 +18,7 @@ app.post('/buildPDF', function(req,res){
     console.log(req.body.htmlToRender);
 
     ///TODO : handle promises
-    /*fs.unlink('./generated_files/result.html', function(err) {
+    fs.unlink('./generated_files/result.html', function(err) {
         if(err) {
             return console.log(err);
         }
@@ -30,7 +30,7 @@ app.post('/buildPDF', function(req,res){
                 console.log(err);
             }
             console.log("The file was saved!");
-
+            wkhtmltopdf('./generated_files/result.html', { pageSize: 'letter' }).pipe(fs.createWriteStream('./generated_files/result.pdf'));
             //wkhtmltopdf('./generated_files/result.html', { output: './generated_files/result.pdf' });
 
             fs.readFile('./generated_files/result.pdf', function(err,data){
@@ -43,14 +43,6 @@ app.post('/buildPDF', function(req,res){
                 }
             });
         });
-    });*/
-
-    fs.unlink('./generated_files/result.pdf', function(err) {
-        if(err) {
-            return console.log(err);
-        }
-        console.log("The file was deleted!");
-        wkhtmltopdf('http://google.com/', { pageSize: 'letter' }).pipe(fs.createWriteStream('./generated_files/result.pdf'));
     });
 
 });
