@@ -24,25 +24,24 @@ app.post('/buildPDF', function(req,res){
         }
         console.log("The pdf file was deleted!");
 
-        wkhtmltopdf(req.body.htmlToRender, function(code, signal) {
-            console.log(code);
-            console.log(signal);
-            fs.createWriteStream('./generated_files/result.pdf', function(err) {
-                if(err) console.log(err);
-                
-                fs.readFile('./generated_files/result.pdf', function(err,data){
-                    if(err){
-                        res.json({'status':'error', msg:err});
-                    }else{
-                        res.writeHead(200, {"Content-Type": "application/pdf"});
-                        res.write(data);
-                        res.end();
-                    }
-                });
-            });
-        });
+        wkhtmltopdf(req.body.htmlToRender, { output: './generated_files/result.pdf' });
     });
 
+    res.status(200);
+});
+
+app.get('/getPDF', function(req,res) {
+    fs.readFile('./generated_files/result.pdf', function(err,data){
+        if(err){
+            res.json({'status':'error', msg:err});
+        }else{
+            res.writeHead(200, {"Content-Type": "application/pdf"});
+            res.write(data);
+            res.end();
+
+            console.log("The pdf file is sent !");
+        }
+    });
 });
 
 app.listen(9000, function() {
