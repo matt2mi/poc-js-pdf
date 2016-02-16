@@ -18,7 +18,7 @@ app.post('/buildPDF', function(req,res){
     console.log(req.body.htmlToRender);
 
     ///TODO : handle promises
-    fs.unlink('./generated_files/result.pdf', function(err) {
+    /*fs.unlink('./generated_files/result.pdf', function(err) {
         if(err) {
             return console.log(err);
         }
@@ -26,15 +26,16 @@ app.post('/buildPDF', function(req,res){
 
         wkhtmltopdf(req.body.htmlToRender).pipe(fs.createWriteStream('./generated_files/result.pdf'));
 
-        fs.readFile('./generated_files/result.pdf', function(err,data){
-            if(err){
-                res.json({'status':'error', msg:err});
-            }else{
-                res.writeHead(200, {"Content-Type": "application/pdf"});
-                res.write(data);
-                res.end();
-            }
-        });
+    });*/
+
+    fs.readFile('./generated_files/ticket.pdf', function(err,data){
+        if(err){
+            res.json({'status':'error', msg:err});
+        }else{
+            res.writeHead(200, {"Content-Type": "application/pdf"});
+            res.write(data);
+            res.end();
+        }
     });
 
 });
