@@ -18,30 +18,22 @@ app.post('/buildPDF', function(req,res){
     console.log(req.body.htmlToRender);
 
     ///TODO : handle promises
-    fs.unlink('./generated_files/result.html', function(err) {
+    fs.unlink('./generated_files/result.pdf', function(err) {
         if(err) {
             return console.log(err);
         }
-        console.log("The file was deleted!");
+        console.log("The pdf file was deleted!");
 
-        fs.writeFile('./generated_files/result.html', req.body.htmlToRender, function(err) {
-            if(err) {
-                console.log('error writing files');
-                console.log(err);
+        wkhtmltopdf(req.body.htmlToRender).pipe(fs.createWriteStream('./generated_files/result.pdf'));
+
+        fs.readFile('./generated_files/result.pdf', function(err,data){
+            if(err){
+                res.json({'status':'error', msg:err});
+            }else{
+                res.writeHead(200, {"Content-Type": "application/pdf"});
+                res.write(data);
+                res.end();
             }
-            console.log("The file was saved!");
-            wkhtmltopdf('./generated_files/result.html', { pageSize: 'letter' }).pipe(fs.createWriteStream('./generated_files/result.pdf'));
-            //wkhtmltopdf('./generated_files/result.html', { output: './generated_files/result.pdf' });
-
-            fs.readFile('./generated_files/result.pdf', function(err,data){
-                if(err){
-                    res.json({'status':'error', msg:err});
-                }else{
-                    res.writeHead(200, {"Content-Type": "application/pdf"});
-                    res.write(data);
-                    res.end();
-                }
-            });
         });
     });
 
