@@ -1,10 +1,6 @@
-'use strict';
+// HomeController
 
-angular.module('angularGruntSeed')
-
-.controller('HomeController', ['$scope','$sce','$http','$window',
-    function($scope, $sce, $http, $window) {
-        $scope.urlServer = '/buildPDF';
+module.exports = function($scope, $sce, $http) {
         $scope.titleModules = [
             {value: '', type: 'h1'},
             {value: '', type: 'h2'},
@@ -15,14 +11,9 @@ angular.module('angularGruntSeed')
         $scope.result = [];
         $scope.nbCols = 0;
         $scope.nbRows = 0;
-        $scope.brief = {
-            pc: 'pc1',
-            name: 'brief1',
-            chaine: 'M6',
-            mode: 'SAS',
-            indice: [{label: 'standard', value: 1000}, {label: 'standard+', value: 2000}]
-        };
         $scope.label = '';
+        $scope.briefs = [];
+
 
         $scope.addModule = function(index) {
             $scope.result.push($sce.trustAsHtml('<' + $scope.titleModules[index].type + '>' + $scope.label + '</' + $scope.titleModules[index].type + '>'));
@@ -65,16 +56,18 @@ angular.module('angularGruntSeed')
                 $scope.result.splice(id + 1, 0, moduleTemp);
             }
         };
+
+
         $scope.getPDF = function() {
             $http.get('/getPDF', {responseType:'arraybuffer'})
                 .then(function(data) {
-                    console.log('success');
+                    console.log('getPDF success');
 
                     var file = new Blob([data.data], {type: 'application/pdf'});
                     var fileURL = URL.createObjectURL(file);
                     window.open(fileURL);
                 }, function(err) {
-                    console.log('error : ');
+                    console.log('getPDF error : ');
                     console.log(err);
                 });
         };
@@ -83,14 +76,24 @@ angular.module('angularGruntSeed')
             for (var i = 0; i < $scope.result.length; i++) {
                 htmlToPost += $sce.getTrustedHtml($scope.result[i]);
             }
-            $http.post($scope.urlServer, {htmlToRender: htmlToPost}, {responseType:'arraybuffer'})
+            $http.post('/buildPDF', {htmlToRender: htmlToPost}, {responseType:'arraybuffer'})
                 .then(function() {
-                    console.log('success');
+                    console.log('buildPDF success');
                     $scope.getPDF();
                 }, function(err) {
-                    console.log('error : ');
+                    console.log('buildPDF error : ');
                     console.log(err);
                 });
         };
-    }
-]);
+
+        $scope.getBrief = function() {
+            $http.get('/getBriefs')
+                .then(function(data) {
+                    console.log('getBriefs success');
+                    $scope.briefs = data;
+                }, function(err) {
+                    console.log('getBriefs error : ');
+                    console.log(err);
+                });
+        };
+    };

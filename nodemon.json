@@ -1,0 +1,6 @@
+{
+  "ignore": ["src/app/build"],
+  "events": {
+    "exit": "npm run build"
+  }
+}

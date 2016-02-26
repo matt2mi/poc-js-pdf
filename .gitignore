@@ -4,3 +4,5 @@
 /bower_components
 .idea
 /generated_files
+npm-debug.log
+src/app/bower_components

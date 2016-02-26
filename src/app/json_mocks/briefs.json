@@ -1,0 +1,293 @@
+{
+    "id": 3,
+    "number": "100001",
+    "version": 3,
+    "campaignName": null,
+    "receptionDate": "20/08/2014 14:14:14",
+    "beginDate": "01/09/2014",
+    "endDate": "30/09/2014",
+
+    "advertiserGroup": null,
+    "advertiser": "Annonceur 2",
+    "entity": null,
+    "agency": "Agence 1",
+    "contactMail": "toto@mail.com",
+    "contactFirstName": "Firstname",
+    "contactLastName": "Lastname",
+
+    "product": "Produit 2",
+    "supportGroupEDI": "M6",
+    "comment": "",
+    "grpInfos": {
+        "id": 3,
+        "target": "MEN<50",
+        "budget": 50000,
+        "budgetEP": 1500,
+        "specChildren": true,
+        "specSports": false,
+        "espace15mn": true,
+        "twinSpot": true,
+        "excluRestrictPeak": true,
+        "espace1h": true,
+        "excluMinuit": true,
+        "excluFormat": true,
+        "firstDayPeak": true,
+        "onOff": true,
+        "specLegal": "-12 ans",
+        "dayparts":[
+             {
+                "min":1,
+                "max":2,
+                "daypart":{
+                   "code":"DAY",
+                   "name":"DAY",
+                   "index":1
+                }
+             },
+             {
+                 "min":3,
+                 "max":4,
+                 "daypart":{
+                    "code":"ACCESS",
+                    "name":"ACCESS",
+                    "index":2
+                 }
+             },
+             {
+                "min":5,
+                "max":6,
+                "daypart":{
+                   "code":"PEAK",
+                   "name":"PEAK",
+                   "index":3
+                }
+             },
+	         {
+	            "min":7,
+	            "max":8,
+	            "daypart":{
+	               "code":"NIGHT",
+	               "name":"NIGHT",
+	               "index":4
+	            }
+	         }
+	      ],
+        "constraints": [
+            {
+                "id": 1,
+                "min": 40,
+                "max": 30,
+                "type": {
+                    "code": "GRP",
+                    "name": "GRP"
+                },
+                "unit": {
+                    "code": "PERCENTAGE",
+                    "name": "%"
+                },
+                "axises": [
+                    {
+                        "id": 1,
+                        "beginSlot": null,
+                        "endSlot": null,
+                        "beginDate": "18/09/2014",
+                        "endDate": "24/09/2014",
+                        "programKind": null,
+                        "format": null,
+                        "daypart": null,
+                        "support": null
+                    },
+                    {
+                        "id": 2,
+                        "beginSlot": null,
+                        "endSlot": null,
+                        "beginDate": null,
+                        "endDate": null,
+                        "programKind": null,
+                        "format": "30",
+                        "daypart": null,
+                        "support": null
+                    },
+                    {
+                      "id": 2,
+                      "beginSlot": null,
+                      "endSlot": null,
+                      "beginDate": null,
+                      "endDate": null,
+                      "programKind": null,
+                      "format": null,
+                      "daypart": null,
+                      "support": "M6"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "min": 1,
+                "max": null,
+                "type": {
+                    "code": "SPOTS",
+                    "name": "Spots"
+                },
+                "unit": {
+                    "code": "NUMBER",
+                    "name": "Nb"
+                },
+                "axises": [
+                    {
+                        "id": 3,
+                        "beginSlot": null,
+                        "endSlot": null,
+                        "beginDate": null,
+                        "endDate": null,
+                        "programKind": "DOCUMENTAIRE",
+                        "format": null,
+                        "daypart": null,
+                        "support": null
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "min": 1,
+                "max": 10,
+                "type": {
+                    "code": "PEAK",
+                    "name": "Peak"
+                },
+                "unit": {
+                    "code": "NUMBER",
+                    "name": "Nb"
+                },
+                "axises": [
+                    {
+                        "id": 4,
+                        "beginSlot": null,
+                        "endSlot": null,
+                        "beginDate": "01/01/2014",
+                        "endDate": "10/10/2014",
+                        "programKind": null,
+                        "format": null,
+                        "daypart": null,
+                        "support": null
+                    },
+                    {
+                        "id": 5,
+                        "beginSlot": null,
+                        "endSlot": null,
+                        "beginDate": null,
+                        "endDate": null,
+                        "programKind": null,
+                        "format": null,
+                        "daypart": "50",
+                        "support": null
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "min": 1,
+                "max": 10,
+                "type": {
+                    "code": "PEAK",
+                    "name": "Peak"
+                },
+                "unit": {
+                    "code": "NUMBER",
+                    "name": "Nb"
+                },
+                "axises": [
+                    {
+                        "id": 4,
+                        "beginSlot": null,
+                        "endSlot": null,
+                        "beginDate": "10/10/2014",
+                        "endDate": "12/12/2014",
+                        "programKind": null,
+                        "format": null,
+                        "daypart": null,
+                        "support": null
+                    },
+                    {
+                        "id": 5,
+                        "beginSlot": null,
+                        "endSlot": null,
+                        "beginDate": null,
+                        "endDate": null,
+                        "programKind": null,
+                        "format": null,
+                        "daypart": "20",
+                        "support": null
+                    }
+                ]
+            }
+        ]
+    },
+    "status": {
+        "id": 1,
+        "name": "A traiter"
+    },
+    "type": {
+        "id": 1,
+        "name": "CGRP garanti"
+    },
+    "requestType": {
+        "id": 1,
+        "name": "Réservation"
+    },
+    "commercialProduct": {
+        "id": 1358,
+        "name": "PARIS PREMIERE PENALITES D'ANNULATION",
+        "beginDate": "01/01/2014",
+        "endDate": "31/12/2015",
+        "active": true,
+        "seeOptions": true,
+        "salesMode": {
+            "id": 301,
+            "name": "Cot GRP Garanti"
+        }
+    },
+    "formats": [
+        {
+            "id": 1,
+            "format": "0-10",
+            "min": "30",
+            "max": "45"
+        },
+        {
+            "id": 2,
+            "format": "10-20",
+            "min": "10",
+            "max": "20"
+        },
+        {
+            "id": 3,
+            "format": "20-30",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "varieties": [
+        {
+            "id": 5,
+            "code": "11020101",
+            "name": "Accessoires deux-roues",
+            "primary": true
+        },
+        {
+            "id": 6,
+            "code": "11111111",
+            "name": "Boites à outils",
+            "primary": false
+        },
+        {
+            "id": 7,
+            "code": "22222222",
+            "name": "Cartes surprises",
+            "primary": false
+        }
+    ],
+    "daysOff": [
+      {"dayOffPK": {"day": "lundi"}}
+    ]
+}

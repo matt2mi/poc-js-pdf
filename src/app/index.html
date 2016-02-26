@@ -1,19 +1,19 @@
 <!doctype html>
-<html lang="en" ng-app="angularGruntSeed">
-
+<html lang="en" ng-app="pocJsPdf">
 <head>
     <title>Poc js to PDF</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- bower:css -->
+    <!-- endbower -->
 
     <!-- Bootstrap core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/starter-template.css" rel="stylesheet">
 
 </head>
-
 <body>
-
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -41,19 +41,18 @@
 
     <div ng-view></div>
 
-    <!-- build:js js/libs.min.js -->
-    <script src="js/jquery.js"></script>
-    <script src="js/angular.js"></script>
-    <script src="js/angular-route.js"></script>
-    <script src="js/angular-resource.js"></script>
-    <!-- endbuild -->
 
-    <!-- build:js js/app.min.js -->
-    <script src="js/app.js"></script>
-    <script src="js/app-routes.js"></script>
-    <script src="js/homeController.js"></script>
-    <!-- endbuild -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- endbower -->
 
+    <script src="build/app.bundle.js"></script>
 </body>
-
 </html>
+
+<!-- Live reload page -->
+<script src="//localhost:9091"></script>
