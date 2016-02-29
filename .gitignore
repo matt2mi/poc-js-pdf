@@ -5,4 +5,4 @@
 .idea
 /generated_files
 npm-debug.log
-src/app/bower_components
+src/main/app/bower_components
