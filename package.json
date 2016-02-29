@@ -16,7 +16,8 @@
     "livereload": "live-reload --port 9091 src/app/build",
     "open": "opener http://localhost:9000",
     "cbs": "npm run clean && npm run build && npm run open & parallelshell \"npm run serve\" \"npm run livereload\""
-    grunt call by mvn
+
+
   },
   "dependencies": {
     "body-parser": "^1.15.0",
